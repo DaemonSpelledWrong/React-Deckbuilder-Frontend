@@ -1,0 +1,41 @@
+.header {
+  background-color: #303437;
+  padding: 1rem;
+  border-style: double;
+  border-width: 4px;
+  border-end-start-radius: 30px;
+  border-end-end-radius: 30px;
+  border-color: gray;
+  color: #C4AB63;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 10vh;
+}
+
+.navbar {
+  display: flex;
+  border-style: solid;
+  border-color: #C4AB63;
+  border-width: 1px;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.navbar li {
+  margin: 0 15px 0;
+}
+
+.navbar li > a:link, a:visited {
+  text-decoration: none;
+  color: #C4AB63;
+}
+
+.title {
+  font-size: 30px;
+}
