@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Card from '../Card'
 import './main.css'
 
-const CardContainer = (props) => {
-  const cardRender = () => {
-    return props.allCards.map(card => {
+
+export default class CardContainer extends Component {
+  cardRender = () => {
+    return this.props.allCards.map(card => {
       return (
         <Card 
           key={card.name}
@@ -14,13 +15,13 @@ const CardContainer = (props) => {
       )
     })
   }
-  return(
-    <section className="container-zone">
-      <section className="card-container">
-        {cardRender()}
+  render(){
+    return(
+      <section className="container-zone">
+        <section className="card-container">
+          {this.cardRender()}
+        </section>
       </section>
-    </section>
-  )
+    )
+  }
 }
-
-export default CardContainer
