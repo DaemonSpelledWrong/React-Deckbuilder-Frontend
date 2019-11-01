@@ -1,0 +1,29 @@
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #303437;
+  border-style: double;
+  border-width: 5px;
+  border-color: grey;
+  bottom: 0;
+  height: 5vh;
+  margin-top: 1rem;
+  position: absolute;
+  width: 99.35%;
+}
+
+footer a {
+  color: #C4AB63;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.logos {
+  display: flex;
+  justify-content: space-between;
+}
+.logos img {
+  height: 2rem;
+  margin-right: 10px;
+}
