@@ -7,6 +7,7 @@ import {
 
 import CardContainer from '../CardContainer';
 import DeckBuilder from '../DeckBuilder';
+import Footer from '../Footer'
 import Home from '../Home';
 import Login from '../Login';
 import Navigation from '../Navigation';
@@ -31,16 +32,19 @@ export default class App extends Component {
   render() {
     return(
       <div className="App">
-        <Router>
-          <Navigation/>
-          <Switch>
-            <Route path="/home" component={ Home }/>
-            <Route path="/cards" render={(...props) => <CardContainer allCards={this.state.allCards}/>} />
-            <Route path='/deckbuilder' component={ DeckBuilder }/>
-            <Route path='/signup' component={ Signup }/>
-            <Route path='/login' component={ Login } />
-          </Switch>
-        </Router>
+        <section className="content-wrap">
+          <Router>
+            <Navigation/>
+            <Switch>
+              <Route path="/home" component={ Home }/>
+              <Route path="/cards" render={(...props) => <CardContainer allCards={this.state.allCards}/>} />
+              <Route path='/deckbuilder' component={ DeckBuilder }/>
+              <Route path='/signup' component={ Signup }/>
+              <Route path='/login' component={ Login } />
+            </Switch>
+          </Router>
+        </section>
+        <Footer />
       </div>
     )
   }

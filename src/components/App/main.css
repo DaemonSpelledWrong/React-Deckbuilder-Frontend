@@ -52,7 +52,13 @@ table {
 /* Root */
 
 .App {
-  min-height: 100vh;
 	background-color: #D9CED6;
-  font-family: 'Open Sans', sans-serif;
+	flex: 1;
+	font-family: 'Open Sans', sans-serif;
+	min-height: 100vh;
+	position: relative;
+}
+
+.content-wrap {
+	padding-bottom: 10vh;
 }
