@@ -14,5 +14,25 @@
 
 .container-zone {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+#page-numbers {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  background-color: #303437;
+  border-style: solid;
+  border-color: grey;
+  border-width: 1px;
+  border-radius: 1rem;
+  color: #C4AB63;
+  margin-top: 1rem;
+  padding: 1rem;
+  width: 80vw;
+}
+
+#page-numbers li {
+  margin: 0 1rem 0;
 }
