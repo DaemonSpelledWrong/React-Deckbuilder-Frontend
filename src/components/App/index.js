@@ -21,19 +21,11 @@ export default class App extends Component {
   }
 
   componentDidMount = () => {
-    fetch('http://localhost:3000/standard_cards', {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      }
-    })
-    .then(response => response.json())
-    .then(cards => {
-      this.setState({
-        allCards: cards
-      })
-    })
+    fetch('http://localhost:3000/standard_cards')
+      .then(response => response.json())
+      .then(cards => this.setState({
+          allCards: cards
+      }))
   }
 
   render() {
@@ -42,21 +34,11 @@ export default class App extends Component {
         <Router>
           <Navigation/>
           <Switch>
-            <Route path="/home">
-              <Home />
-            </Route>
-            <Route path="/cards">
-              <CardContainer allCards={this.state.allCards}/>
-            </Route>
-            <Route path='/deckbuilder'>
-              <DeckBuilder />
-            </Route>
-            <Route path='/signup'>
-              <Signup />
-            </Route>
-            <Route path='/login'>
-              <Login />
-            </Route>
+            <Route path="/home" component={ Home }/>
+            <Route path="/cards" render={(...props) => <CardContainer allCards={this.state.allCards}/>} />
+            <Route path='/deckbuilder' component={ DeckBuilder }/>
+            <Route path='/signup' component={ Signup }/>
+            <Route path='/login' component={ Login } />
           </Switch>
         </Router>
       </div>

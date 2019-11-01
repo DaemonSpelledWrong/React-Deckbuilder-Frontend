@@ -1,27 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Card from '../Card'
 import './main.css'
 
 
-export default class CardContainer extends Component {
-  cardRender = () => {
-    return this.props.allCards.map(card => {
-      return (
-        <Card 
-          key={card.name}
-          cardName={card.name}
-          cardImage={card.image}
-        />
-      )
-    })
-  }
-  render(){
-    return(
-      <section className="container-zone">
-        <section className="card-container">
-          {this.cardRender()}
-        </section>
+export default ({allCards}) => {
+  const cardRender = allCards.map(card => (
+      <Card 
+        key={card.name}
+        name={card.name}
+        image={card.image}
+      />
+  ))
+
+  return(
+    <section className="container-zone">
+      <section className="card-container">
+        {cardRender}
       </section>
-    )
-  }
+    </section>
+  )
 }
