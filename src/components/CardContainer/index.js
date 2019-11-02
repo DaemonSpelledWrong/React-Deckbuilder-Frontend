@@ -8,22 +8,27 @@ export default class CardContainer extends Component {
     cardsPerPage: 21
   }
 
-  handleClick = event => {
+  decrementButton = () => {
     this.setState({
-      currentPage: Number(event.target.id)
+      currentPage: this.state.currentPage - 1
     })
   }
-  
+
+  incrementButton = () => {
+    this.setState({
+      currentPage: this.state.currentPage + 1
+    })
+  }
+
   render() {
-    this.handleClick = this.handleClick.bind(this);
     const { currentPage, cardsPerPage } = this.state;
     const allCards = this.props.allCards
 
-    const indexOfLastPage = currentPage * cardsPerPage;
-    const indexOfFirstPage = indexOfLastPage - cardsPerPage;
-    const currentCards = allCards.slice(indexOfFirstPage, indexOfLastPage);
+    const indexOfLastCard = currentPage * cardsPerPage;
+    const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+    const currentCards = allCards.slice(indexOfFirstCard, indexOfLastCard);
 
-    const renderCards = currentCards.map((card, index) => {
+    const renderCards = currentCards.map(card => {
       return(
         <Card 
           key={card.name}
@@ -33,30 +38,19 @@ export default class CardContainer extends Component {
       )
     })
 
-    const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(allCards.length / cardsPerPage); i++) {
-      pageNumbers.push(i)
-    }
-
-    const renderPageNumbers = pageNumbers.map(number => {
-      return (
-        <li
-          key={number}
-          id={number}
-          onClick={this.handleClick}
-        >
-          {number}
-        </li>
-      );
-    })
     return(
       <section className="container-zone">
         <section className="card-container">
           {renderCards}
         </section>
-        <ul id='page-numbers'>
-          {renderPageNumbers}
-        </ul>
+        <section className="page-navigation">
+          <button onClick={this.decrementButton}>
+            Previous Page
+          </button>
+          <button onClick={this.incrementButton}>
+            Next Page
+          </button>
+        </section>
       </section>
     )
   }

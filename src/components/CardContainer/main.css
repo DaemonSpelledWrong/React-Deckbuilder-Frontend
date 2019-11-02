@@ -18,21 +18,9 @@
   flex-flow: column;
 }
 
-#page-numbers {
+.page-navigation {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  background-color: #303437;
-  border-style: solid;
-  border-color: grey;
-  border-width: 1px;
-  border-radius: 1rem;
-  color: #C4AB63;
+  justify-content: space-between;
   margin-top: 1rem;
-  padding: 1rem;
   width: 80vw;
-}
-
-#page-numbers li {
-  margin: 0 1rem 0;
 }
