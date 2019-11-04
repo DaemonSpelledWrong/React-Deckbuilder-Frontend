@@ -11,7 +11,7 @@ const Navigation = () => {
         <p className="title">Magic Deckbuilder Deluxe</p>
         <ul className="navbar">
           <li>
-            <Link to="/home">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
             <Link to="/cards">Cards</Link>
