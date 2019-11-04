@@ -36,9 +36,9 @@ export default class App extends Component {
           <Router>
             <Navigation/>
             <Switch>
-              <Route path="/home" component={ Home }/>
+              <Route exact path="/" component={ Home }/>
               <Route path="/cards" render={(...props) => <CardContainer allCards={this.state.allCards}/>} />
-              <Route path='/deckbuilder' component={ DeckBuilder }/>
+              <Route path='/deckbuilder' render={(...props) => <DeckBuilder allCards={this.state.allCards}/>}/>
               <Route path='/signup' component={ Signup }/>
               <Route path='/login' component={ Login } />
             </Switch>

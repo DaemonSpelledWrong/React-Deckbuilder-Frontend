@@ -5,7 +5,7 @@ import './main.css'
 export default class CardContainer extends Component {
   state = {
     currentPage: 1,
-    cardsPerPage: 21
+    cardsPerPage: 20
   }
 
   decrementButton = () => {
@@ -34,15 +34,22 @@ export default class CardContainer extends Component {
           key={card.name}
           name={card.name}
           image={card.image}
+          addCard={this.props.addCard}
         />
       )
     })
 
     return(
       <section className="container-zone">
-        <section className="card-container">
-          {renderCards}
-        </section>
+        { window.location.pathname === '/deckbuilder'
+          ? <section className="deck-card-container">
+              {renderCards}
+            </section>
+          :
+            <section className="card-container">
+              {renderCards}
+            </section>
+        }
         <section className="page-navigation">
           <button onClick={this.decrementButton}>
             Previous Page
