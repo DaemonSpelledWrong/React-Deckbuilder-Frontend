@@ -1,34 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './main.css'
 
 import CardContainer from '../CardContainer';
 
-export default class DeckBuilder extends Component {
+export default ({allCards, selectedCards, isLoggedIn, addCard, removeCard}) => {
 
-  state = {
-    selectedCards: []
-  }
-
-  addCard = () => {
-    console.log('clicked!')
-  }
-
-  removeCard = () => {
-    console.log('removed!')
-  }
-
-  render() {
-    return(
-      <section className='deck-zone'>
-        <CardContainer 
-          allCards={this.props.allCards}
-          addCard={this.addCard}
-        />
-        <CardContainer 
-          allCards={this.state.selectedCards}
-          removeCard={this.removeCard}
-        />
-      </section>
-    )
-  }
+  return(
+    <section className='deck-zone'>
+      <CardContainer 
+        allCards={allCards}
+        method={addCard}
+      />
+      <CardContainer 
+        allCards={selectedCards}
+        method={removeCard}
+      />
+    </section>
+  )
 }

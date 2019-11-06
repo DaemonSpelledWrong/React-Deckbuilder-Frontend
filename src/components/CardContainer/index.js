@@ -31,10 +31,9 @@ export default class CardContainer extends Component {
     const renderCards = currentCards.map(card => {
       return(
         <Card 
-          key={card.name}
-          name={card.name}
-          image={card.image}
-          addCard={this.props.addCard}
+          key={card.id}
+          card={card}
+          method={this.props.method}
         />
       )
     })
