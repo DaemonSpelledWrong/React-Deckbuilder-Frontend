@@ -4,8 +4,39 @@ import {
 } from "react-router-dom";
 import './main.css'
 
-const Navigation = () => {
+const Navigation = ({loggedIn, logoutUser}) => {
+
+  const handleClick = event => {
+    event.preventDefault()
+    logoutUser()
+  }
+
   return(
+    loggedIn
+    ?
+    <section className="header">
+      <nav className="navigation">
+        <p className="title">Magic Deckbuilder Deluxe</p>
+        <ul className="navbar">
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/cards">Cards</Link>
+          </li>
+          <li>
+            <Link to="/deckbuilder">Deck Builder</Link>
+          </li>
+          <li>
+            <Link to="/profile">Profile</Link>
+          </li>
+          <li>
+            <Link onClick={handleClick}>Logout</Link>
+          </li>
+        </ul>
+      </nav>
+    </section>
+    : 
     <section className="header">
       <nav className="navigation">
         <p className="title">Magic Deckbuilder Deluxe</p>
