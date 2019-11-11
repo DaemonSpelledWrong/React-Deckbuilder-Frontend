@@ -29,6 +29,30 @@ export default class App extends Component {
           allCards: cards
       }))
   }
+  
+  // loginFunctionality = () => {
+  //   localStorage.getItem('auth_token') !== undefined && localStorage.getItem('auth_token') !== null
+  //   ? this.setState({
+  //     isLoggedIn: true
+  //   }) 
+  //   : this.setState({
+  //     isLoggedIn: false
+  //   }) &&
+  //   localStorage.removeItem('auth_token')
+  // }
+
+  loginUser = () => {
+    this.setState({
+      isLoggedIn: true
+    })
+  }
+
+  logoutUser = () => {
+    this.setState({
+      isLoggedIn: false
+    })
+    localStorage.removeItem('auth_token')
+  }
 
   addCard = card => {
     return this.state.selectedCards.includes(card)
@@ -48,16 +72,20 @@ export default class App extends Component {
     : null
   }
 
+  viewCard = card => {
+    console.log('to be added!', card)
+  }
+
   render() {
     const { allCards, selectedCards, isLoggedIn } = this.state
     return(
       <div className="App">
         <section className="content-wrap">
           <Router>
-            <Navigation/>
+            <Navigation loggedIn={isLoggedIn} logoutUser={this.logoutUser}/>
             <Switch>
               <Route exact path="/" component={ Home }/>
-              <Route path="/cards" render={(...props) => <CardContainer allCards={allCards}/>} />
+              <Route path="/cards" render={(...props) => <CardContainer allCards={allCards} method={this.viewCard}/>} />
               <Route path='/deckbuilder'>
                 <DeckBuilder 
                   allCards={allCards} 
@@ -68,7 +96,9 @@ export default class App extends Component {
                 />
               </Route>
               <Route path='/signup' component={ Signup }/>
-              <Route path='/login' component={ Login } />
+              <Route path='/login'>
+                <Login loginUser={this.loginUser}/>
+              </Route>
             </Switch>
           </Router>
         </section>

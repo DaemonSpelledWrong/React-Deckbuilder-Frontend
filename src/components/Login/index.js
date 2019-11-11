@@ -24,7 +24,7 @@ export default class Login extends Component {
     .then(response => response.json())
     .then(token => {
       localStorage.setItem('authToken', token.auth_token)
-      // this.props.loginUser()
+      this.props.loginUser()
     })
     .then(
       this.setState({
