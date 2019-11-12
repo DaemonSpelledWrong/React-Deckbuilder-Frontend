@@ -90,6 +90,7 @@ export default class App extends Component {
 
   render() {
     const { allCards, selectedCards, user } = this.state
+    console.log(user)
     return(
       <div className="App">
         <section className="content-wrap">
@@ -113,7 +114,7 @@ export default class App extends Component {
                 <Login loginUser={this.loginUser} logoutUser={this.logoutUser} user={user}/>
               </Route>
               <Route path='/profile'>
-                <Profile user={user}/>
+                <Profile user={user} method={this.viewCard}/>
               </Route>
             </Switch>
           </Router>
