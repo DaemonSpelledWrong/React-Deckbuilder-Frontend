@@ -8,6 +8,11 @@ export default class Login extends Component {
     password: ''
   }
 
+  componentDidMount = () =>{
+    localStorage.removeItem('authToken')
+    return this.props.user !== null ? this.props.logoutUser() : null
+  }
+
   logUserIn = (event) => {
     event.preventDefault();
     fetch('http://localhost:3000/authenticate', {
@@ -24,7 +29,7 @@ export default class Login extends Component {
     .then(response => response.json())
     .then(token => {
       localStorage.setItem('authToken', token.auth_token)
-      this.props.loginUser()
+      this.props.loginUser(token.user)
     })
     .then(
       this.setState({
@@ -32,9 +37,6 @@ export default class Login extends Component {
         password: ''
       })
     )
-    // .then(
-    //   this.props.loadHomePage(event)
-    // )
   }
 
   updateEmail = (event) => {

@@ -10,6 +10,7 @@ import DeckBuilder from '../DeckBuilder';
 import Footer from '../Footer'
 import Home from '../Home';
 import Login from '../Login';
+import Profile from '../Profile';
 import Navigation from '../Navigation';
 import Signup from '../Sign Up';
 
@@ -19,7 +20,7 @@ export default class App extends Component {
   state = {
     allCards : [],
     selectedCards: [],
-    isLoggedIn: false
+    user: null
   }
 
   componentDidMount = () => {
@@ -29,29 +30,22 @@ export default class App extends Component {
           allCards: cards
       }))
   }
-  
-  // loginFunctionality = () => {
-  //   localStorage.getItem('auth_token') !== undefined && localStorage.getItem('auth_token') !== null
-  //   ? this.setState({
-  //     isLoggedIn: true
-  //   }) 
-  //   : this.setState({
-  //     isLoggedIn: false
-  //   }) &&
-  //   localStorage.removeItem('auth_token')
-  // }
 
-  loginUser = () => {
-    this.setState({
-      isLoggedIn: true
-    })
+  loginUser = user => {
+    console.log(user)
+    return (
+      localStorage.getItem('authToken') === 'null'
+      ? null
+      : localStorage.getItem('authToken') === 'undefined'
+        ? null
+        : this.setState({ user })
+    )
   }
 
   logoutUser = () => {
     this.setState({
-      isLoggedIn: false
+      user: null
     })
-    localStorage.removeItem('auth_token')
   }
 
   addCard = card => {
@@ -76,13 +70,31 @@ export default class App extends Component {
     console.log('to be added!', card)
   }
 
+  saveNewDeck = () => {
+    fetch('http://localhost:3000/decks', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user_id: this.state.user.id,
+        name: null,
+        cards: this.state.selectedCards
+      })
+    })
+  }
+
+  saveExistingDeck = () => {
+    console.log('hit this too!')
+  }
+
   render() {
-    const { allCards, selectedCards, isLoggedIn } = this.state
+    const { allCards, selectedCards, user } = this.state
     return(
       <div className="App">
         <section className="content-wrap">
           <Router>
-            <Navigation loggedIn={isLoggedIn} logoutUser={this.logoutUser}/>
+            <Navigation loggedIn={user}/>
             <Switch>
               <Route exact path="/" component={ Home }/>
               <Route path="/cards" render={(...props) => <CardContainer allCards={allCards} method={this.viewCard}/>} />
@@ -90,14 +102,18 @@ export default class App extends Component {
                 <DeckBuilder 
                   allCards={allCards} 
                   selectedCards={selectedCards}
-                  isLoggedIn={isLoggedIn}
+                  user={user}
                   addCard={this.addCard}
                   removeCard={this.removeCard}
+                  saveNewDeck={this.saveNewDeck}
                 />
               </Route>
               <Route path='/signup' component={ Signup }/>
               <Route path='/login'>
-                <Login loginUser={this.loginUser}/>
+                <Login loginUser={this.loginUser} logoutUser={this.logoutUser} user={user}/>
+              </Route>
+              <Route path='/profile'>
+                <Profile user={user}/>
               </Route>
             </Switch>
           </Router>
