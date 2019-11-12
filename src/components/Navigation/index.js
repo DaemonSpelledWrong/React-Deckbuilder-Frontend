@@ -6,11 +6,6 @@ import './main.css'
 
 const Navigation = ({loggedIn, logoutUser}) => {
 
-  const handleClick = event => {
-    event.preventDefault()
-    logoutUser()
-  }
-
   return(
     loggedIn
     ?
@@ -31,7 +26,7 @@ const Navigation = ({loggedIn, logoutUser}) => {
             <Link to="/profile">Profile</Link>
           </li>
           <li>
-            <Link onClick={handleClick}>Logout</Link>
+            <Link to='/login'>Logout</Link>
           </li>
         </ul>
       </nav>

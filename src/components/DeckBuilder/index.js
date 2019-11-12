@@ -3,7 +3,7 @@ import './main.css'
 
 import CardContainer from '../CardContainer';
 
-export default ({allCards, selectedCards, isLoggedIn, addCard, removeCard}) => {
+export default ({allCards, selectedCards, user, addCard, removeCard, saveNewDeck}) => {
 
   return(
     <section className='deck-zone'>
@@ -14,6 +14,9 @@ export default ({allCards, selectedCards, isLoggedIn, addCard, removeCard}) => {
       <CardContainer 
         allCards={selectedCards}
         method={removeCard}
+        user={user}
+        deck = 'deck'
+        saveNewDeck={saveNewDeck}
       />
     </section>
   )

@@ -40,19 +40,21 @@ export default class CardContainer extends Component {
 
     return(
       <section className="container-zone">
-        { window.location.pathname === '/deckbuilder'
-          ? <section className="deck-card-container">
-              {renderCards}
-            </section>
-          :
-            <section className="card-container">
-              {renderCards}
-            </section>
-        }
+        <section className={ this.props.deck ? 'deck-card-container' : 'card-container'}>
+          {renderCards}
+        </section>
         <section className="page-navigation">
           <button onClick={this.decrementButton}>
             Previous Page
           </button>
+          {
+            this.props.user
+            ? 
+            <button onClick={this.props.saveNewDeck}>
+              Save
+            </button>
+            : null
+          }
           <button onClick={this.incrementButton}>
             Next Page
           </button>
