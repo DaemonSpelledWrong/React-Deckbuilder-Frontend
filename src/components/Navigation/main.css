@@ -1,21 +1,20 @@
 .header {
-  background-color: #303437;
+  background-color: #2d2d2d;
   padding: 1rem;
   border-style: double;
   border-width: 4px;
-  border-end-start-radius: 30px;
-  border-end-end-radius: 30px;
   border-color: gray;
   color: #C4AB63;
   padding-left: 1rem;
   padding-right: 1rem;
+  width: 1400px;
 }
 
 .navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 10vh;
+  min-height: 6vh;
 }
 
 .navbar {

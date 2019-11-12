@@ -10,14 +10,13 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  background-color: #303437;
+  background-color: #111111;
   border-style: double;
   border-color: grey;
   border-width: 2px;
-  border-radius: 1rem;
-  margin-top: 1rem;
   padding: 1rem;
-  width: 80vw;
+  min-height: 300px;
+  width: 1404px;
 }
 
 .deck-page-navigation {
