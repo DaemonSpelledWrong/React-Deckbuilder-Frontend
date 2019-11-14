@@ -106,10 +106,6 @@ export default class App extends Component {
       })
   }
 
-  saveExistingDeck = () => {
-    console.log('hit this too!')
-  }
-
   resetDeck = () => {
     return (
       this.setState({
