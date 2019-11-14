@@ -20,6 +20,12 @@ export default class CardContainer extends Component {
     })
   }
 
+  maxCardsPerPage = () => {
+    this.setState({
+      cardsPerPage: 21
+    })
+  }
+
   render() {
     const { currentPage, cardsPerPage } = this.state;
     const allCards = this.props.allCards
@@ -40,25 +46,43 @@ export default class CardContainer extends Component {
 
     return(
       <section className="container-zone">
-        <section className={ this.props.deck ? 'deck-card-container' : 'card-container'}>
-          {renderCards}
-          <section className="page-navigation">
-            <button onClick={this.decrementButton}>
-              Previous Page
-            </button>
-            {
-              this.props.user
-              ? 
-              <button onClick={this.props.saveNewDeck}>
-                Save
-              </button>
-              : null
-            }
-            <button onClick={this.incrementButton}>
-              Next Page
-            </button>
-          </section>
-        </section>
+        {
+          window.location.pathname === '/cards'
+          ?
+            <section className='cards-page'>
+              {renderCards}
+              <section className="page-navigation">
+                <button onClick={this.decrementButton}>
+                  Previous Page
+                </button>
+                <button onClick={this.incrementButton}>
+                  Next Page
+                </button>
+              </section>
+            </section>
+          :
+            <section className='container-zone'>
+              <section className={ this.props.deck ? 'deck-card-container' : 'card-container'}>
+                {renderCards}
+              </section>
+              <section className="page-navigation">
+                <button onClick={this.decrementButton}>
+                  Previous Page
+                </button>
+                {
+                  this.props.user
+                  ? 
+                  <button onClick={this.props.saveNewDeck}>
+                    Save
+                  </button>
+                  : null
+                }
+                <button onClick={this.incrementButton}>
+                  Next Page
+                </button>
+              </section>
+            </section>
+        }
       </section>
     )
   }

@@ -7,9 +7,9 @@ footer {
   border-width: 5px;
   border-color: grey;
   bottom: 0;
-  height: 40px;
+  height: 6vh;
   position: absolute;
-  width: 1430px;
+  width: 100vw;
 }
 
 footer a {
