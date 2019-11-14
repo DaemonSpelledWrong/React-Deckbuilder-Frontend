@@ -2,6 +2,7 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
+  background-color: #e7ded9;
   padding: 1rem;
   height: 42vh;
   width: 100vw;
@@ -11,10 +12,7 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  background-color:#141414;
-  border-style: double;
-  border-color: grey;
-  border-width: 2px;
+  background-color:#e7ded9;
   padding: 1rem;
   height: 84vh;
   width: 100vw;
@@ -23,9 +21,8 @@
 .container-zone {
   display: flex;
   align-items: center;
-  background-color:#141414;
   border-style: double;
-  border-color: grey;
+  border-color: #4E4F50;
   border-width: 2px;
   flex-flow: column;
   height: 42vh;
@@ -34,7 +31,9 @@
 
 .page-navigation {
   display: flex;
-  justify-content: space-between;
-  width: 80vw;
+  justify-content: space-around;
+  background-color: #e7ded9;
+  width: 100vw;
   max-height: 30px;
+  padding-bottom: 0.5vh;
 }

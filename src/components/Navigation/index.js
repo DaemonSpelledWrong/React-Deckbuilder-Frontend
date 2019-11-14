@@ -4,7 +4,7 @@ import {
 } from "react-router-dom";
 import './main.css'
 
-const Navigation = ({loggedIn, logoutUser}) => {
+const Navigation = ({loggedIn, reset}) => {
 
   return(
     loggedIn
@@ -13,19 +13,19 @@ const Navigation = ({loggedIn, logoutUser}) => {
       <nav className="navigation">
         <p className="title">Magic Deckbuilder Deluxe</p>
         <ul className="navbar">
-          <li>
+          <li onClick={reset}>
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li onClick={reset}>
             <Link to="/cards">Cards</Link>
           </li>
           <li>
             <Link to="/deckbuilder">Deck Builder</Link>
           </li>
-          <li>
+          <li onClick={reset}>
             <Link to="/profile">Profile</Link>
           </li>
-          <li>
+          <li onClick={reset}>
             <Link to='/login'>Logout</Link>
           </li>
         </ul>

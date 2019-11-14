@@ -1,8 +1,9 @@
 .home-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 20vh;
+  height: 84vh;
 }
 
 p {

@@ -78,7 +78,7 @@ export default class App extends Component {
     })
   }
 
-  saveNewDeck = () => {
+  saveDeck = () => {
     this.state.deck_id !== null
     ?
       fetch(`http://localhost:3000/decks/${this.state.deck_id}`, {
@@ -88,6 +88,7 @@ export default class App extends Component {
         },
         body: JSON.stringify({
           name: null,
+          user_id: this.state.user.id,
           cards: this.state.selectedCards
         })
       })
@@ -105,8 +106,12 @@ export default class App extends Component {
       })
   }
 
-  saveExistingDeck = () => {
-    console.log('hit this too!')
+  resetDeck = () => {
+    return (
+      this.setState({
+        deck_id: null
+      })
+    )
   }
 
   render() {
@@ -115,9 +120,11 @@ export default class App extends Component {
       <div className="App">
         <section className="content-wrap">
           <Router>
-            <Navigation loggedIn={user}/>
+            <Navigation loggedIn={user} reset={this.resetDeck}/>
             <Switch>
-              <Route exact path="/" component={ Home }/>
+              <Route exact path="/">
+                <Home user={user}/>
+              </Route>
               <Route path="/cards" render={(...props) => <CardContainer allCards={allCards} method={this.viewCard}/>} />
               <Route path='/deckbuilder'>
                 <DeckBuilder 
@@ -126,7 +133,7 @@ export default class App extends Component {
                   user={user}
                   addCard={this.addCard}
                   removeCard={this.removeCard}
-                  saveNewDeck={this.saveNewDeck}
+                  saveNewDeck={this.saveDeck}
                 />
               </Route>
               <Route path='/signup' component={ Signup }/>

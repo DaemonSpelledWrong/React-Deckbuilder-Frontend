@@ -6,8 +6,7 @@ export default ({card, method}) => {
   const handleClick = () => {
     method(card)
   }
-
-  console.log(card)
+  
   return(
     <div className="card">
       {

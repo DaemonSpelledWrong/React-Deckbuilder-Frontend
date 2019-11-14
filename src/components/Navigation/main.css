@@ -2,12 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #2d2d2d;
+  background-color: #13292A;
   padding: 1rem;
   border-style: double;
   border-width: 4px;
   border-color: gray;
-  color: #C4AB63;
+  color: #ffffff;
   height: 10vh;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -24,7 +24,7 @@
 .navbar {
   display: flex;
   border-style: solid;
-  border-color: #C4AB63;
+  border-color: #ffffff;
   border-width: 1px;
   border-radius: 1rem;
   padding: 1rem;
@@ -36,7 +36,7 @@
 
 .navbar li > a:link, a:visited {
   text-decoration: none;
-  color: #C4AB63;
+  color: #ffffff;
 }
 
 .title {
