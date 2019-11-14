@@ -7,7 +7,7 @@ export default ({ user, decks, method }) => (
   ( user !== null
     ?
     <section className='profile'>
-      <h1>{user.email}</h1>
+      <h1>{user.data.attributes.email}</h1>
       { user !== null ? <CardContainer allCards={decks.data} method={method} edit='edit'/> : null }
     </section>
     :

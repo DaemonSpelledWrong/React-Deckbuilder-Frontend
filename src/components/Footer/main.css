@@ -2,7 +2,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #2d2d2d;
+  background-color: #13292A;
   border-style: double;
   border-width: 5px;
   border-color: grey;
@@ -13,7 +13,7 @@ footer {
 }
 
 footer a {
-  color: #C4AB63;
+  color: #ffffff;
   margin-left: 10px;
   text-decoration: none;
 }

@@ -20,12 +20,6 @@ export default class CardContainer extends Component {
     })
   }
 
-  maxCardsPerPage = () => {
-    this.setState({
-      cardsPerPage: 21
-    })
-  }
-
   render() {
     const { currentPage, cardsPerPage } = this.state;
     const allCards = this.props.allCards
@@ -65,7 +59,7 @@ export default class CardContainer extends Component {
               <section className={ this.props.deck ? 'deck-card-container' : 'card-container'}>
                 {renderCards}
               </section>
-              <section className="page-navigation">
+              <section className={ this.props.deck ? 'deck-page-navigation' : 'page-navigation'}>
                 <button onClick={this.decrementButton}>
                   Previous Page
                 </button>
