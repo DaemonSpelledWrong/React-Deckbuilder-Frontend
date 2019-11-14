@@ -50,7 +50,9 @@ export default class CardContainer extends Component {
           window.location.pathname === '/cards'
           ?
             <section className='cards-page'>
-              {renderCards}
+              <section className={ this.props.deck ? 'deck-card-container' : 'card-container-zone'}>
+                {renderCards}
+              </section>
               <section className="page-navigation">
                 <button onClick={this.decrementButton}>
                   Previous Page
@@ -61,8 +63,8 @@ export default class CardContainer extends Component {
               </section>
             </section>
           :
-            <section className='container-zone'>
-              <section className={ this.props.deck ? 'deck-card-container' : 'card-container'}>
+            <section className='card-container-zone'>
+              <section className={ this.props.deck ? 'deck-card-container' : 'card-container-zone'}>
                 {renderCards}
               </section>
               <section className="page-navigation">
