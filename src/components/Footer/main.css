@@ -2,15 +2,14 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #303437;
+  background-color: #2d2d2d;
   border-style: double;
   border-width: 5px;
   border-color: grey;
   bottom: 0;
-  height: 5vh;
-  margin-top: 1rem;
+  height: 6vh;
   position: absolute;
-  width: 99.35%;
+  width: 100vw;
 }
 
 footer a {

@@ -2,7 +2,7 @@
 A deck building application for the card game Magic the Gathering.
 All card data has been seeded from the <a href="https://scryfall.com/docs/api">Scryfall</a> api. - `https://scryfall.com/docs/api`
 
-<a href = "https://youtu.be/dPr2-NVeRLo">See features video!</a>
+<a href = "https://youtu.be/IGmXcJ4dCCE">See the most recent features video!</a>
 
 This project is live on: https://react-deckbuilder-frontend.firebaseapp.com
 

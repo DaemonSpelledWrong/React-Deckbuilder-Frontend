@@ -5,7 +5,7 @@ import './main.css'
 export default class CardContainer extends Component {
   state = {
     currentPage: 1,
-    cardsPerPage: 20
+    cardsPerPage: 9
   }
 
   decrementButton = () => {
@@ -17,6 +17,12 @@ export default class CardContainer extends Component {
   incrementButton = () => {
     this.setState({
       currentPage: this.state.currentPage + 1
+    })
+  }
+
+  maxCardsPerPage = () => {
+    this.setState({
+      cardsPerPage: 21
     })
   }
 
@@ -40,25 +46,43 @@ export default class CardContainer extends Component {
 
     return(
       <section className="container-zone">
-        <section className={ this.props.deck ? 'deck-card-container' : 'card-container'}>
-          {renderCards}
-        </section>
-        <section className="page-navigation">
-          <button onClick={this.decrementButton}>
-            Previous Page
-          </button>
-          {
-            this.props.user
-            ? 
-            <button onClick={this.props.saveNewDeck}>
-              Save
-            </button>
-            : null
-          }
-          <button onClick={this.incrementButton}>
-            Next Page
-          </button>
-        </section>
+        {
+          window.location.pathname === '/cards'
+          ?
+            <section className='cards-page'>
+              {renderCards}
+              <section className="page-navigation">
+                <button onClick={this.decrementButton}>
+                  Previous Page
+                </button>
+                <button onClick={this.incrementButton}>
+                  Next Page
+                </button>
+              </section>
+            </section>
+          :
+            <section className='container-zone'>
+              <section className={ this.props.deck ? 'deck-card-container' : 'card-container'}>
+                {renderCards}
+              </section>
+              <section className="page-navigation">
+                <button onClick={this.decrementButton}>
+                  Previous Page
+                </button>
+                {
+                  this.props.user
+                  ? 
+                  <button onClick={this.props.saveNewDeck}>
+                    Save
+                  </button>
+                  : null
+                }
+                <button onClick={this.incrementButton}>
+                  Next Page
+                </button>
+              </section>
+            </section>
+        }
       </section>
     )
   }

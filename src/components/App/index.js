@@ -20,7 +20,9 @@ export default class App extends Component {
   state = {
     allCards : [],
     selectedCards: [],
-    user: null
+    user: null,
+    decks: null,
+    deck_id: null
   }
 
   componentDidMount = () => {
@@ -31,14 +33,13 @@ export default class App extends Component {
       }))
   }
 
-  loginUser = user => {
-    console.log(user)
+  loginUser = token => {
     return (
       localStorage.getItem('authToken') === 'null'
       ? null
       : localStorage.getItem('authToken') === 'undefined'
         ? null
-        : this.setState({ user })
+        : this.setState({ user: token.user, decks: token.decks })
     )
   }
 
@@ -70,18 +71,38 @@ export default class App extends Component {
     console.log('to be added!', card)
   }
 
-  saveNewDeck = () => {
-    fetch('http://localhost:3000/decks', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        user_id: this.state.user.id,
-        name: null,
-        cards: this.state.selectedCards
-      })
+  editDeck = deck => {
+    this.setState({
+      selectedCards: deck.attributes.standard_cards,
+      deck_id: deck.attributes.id
     })
+  }
+
+  saveNewDeck = () => {
+    this.state.deck_id !== null
+    ?
+      fetch(`http://localhost:3000/decks/${this.state.deck_id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: null,
+          cards: this.state.selectedCards
+        })
+      })
+    :
+      fetch('http://localhost:3000/decks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user_id: this.state.user.id,
+          name: null,
+          cards: this.state.selectedCards
+        })
+      })
   }
 
   saveExistingDeck = () => {
@@ -89,8 +110,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { allCards, selectedCards, user } = this.state
-    console.log(user)
+    const { allCards, selectedCards, user, decks } = this.state
     return(
       <div className="App">
         <section className="content-wrap">
@@ -114,7 +134,7 @@ export default class App extends Component {
                 <Login loginUser={this.loginUser} logoutUser={this.logoutUser} user={user}/>
               </Route>
               <Route path='/profile'>
-                <Profile user={user} method={this.viewCard}/>
+                <Profile user={user} decks={decks} method={this.editDeck}/>
               </Route>
             </Switch>
           </Router>
