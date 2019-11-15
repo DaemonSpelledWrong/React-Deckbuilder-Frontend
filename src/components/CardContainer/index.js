@@ -46,9 +46,14 @@ export default class CardContainer extends Component {
             <section className='cards-page'>
               {renderCards}
               <section className="page-navigation">
-                <button onClick={this.decrementButton}>
-                  Previous Page
-                </button>
+                {
+                  currentPage === 1 
+                  ? null
+                  :
+                  <button onClick={this.decrementButton}>
+                    Previous Page
+                  </button>
+                }
                 <button onClick={this.incrementButton}>
                   Next Page
                 </button>
@@ -58,22 +63,27 @@ export default class CardContainer extends Component {
             <section className='container-zone'>
               <section className={ this.props.deck ? 'deck-card-container' : 'card-container'}>
                 {renderCards}
-              </section>
-              <section className={ this.props.deck ? 'deck-page-navigation' : 'page-navigation'}>
-                <button onClick={this.decrementButton}>
-                  Previous Page
-                </button>
-                {
-                  this.props.user
-                  ? 
-                  <button onClick={this.props.saveNewDeck}>
-                    Save
+                <section className={ this.props.deck ? 'deck-page-navigation' : 'page-navigation'}>
+                  {
+                    currentPage === 1 
+                    ? null
+                    :
+                    <button onClick={this.decrementButton}>
+                      Previous Page
+                    </button>
+                  }
+                  {
+                    this.props.user
+                    ? 
+                    <button onClick={this.props.saveNewDeck}>
+                      Save
+                    </button>
+                    : null
+                  }
+                  <button onClick={this.incrementButton}>
+                    Next Page
                   </button>
-                  : null
-                }
-                <button onClick={this.incrementButton}>
-                  Next Page
-                </button>
+                </section>
               </section>
             </section>
         }
