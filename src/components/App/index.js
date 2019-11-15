@@ -87,8 +87,8 @@ export default class App extends Component {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          name: null,
-          user_id: this.state.user.id,
+          name: 'Deck',
+          user_id: this.state.user.data.attributes.id,
           cards: this.state.selectedCards
         })
       })
@@ -99,8 +99,8 @@ export default class App extends Component {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          user_id: this.state.user.id,
-          name: null,
+          user_id: this.state.user.data.attributes.id,
+          name: 'Deck',
           cards: this.state.selectedCards
         })
       })

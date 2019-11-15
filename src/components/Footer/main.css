@@ -2,10 +2,8 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #13292A;
-  border-style: double;
-  border-width: 5px;
-  border-color: grey;
+  background-color: #071330;
+  border-top:  2px double #0c4160;
   bottom: 0;
   height: 6vh;
   position: absolute;
@@ -13,7 +11,7 @@ footer {
 }
 
 footer a {
-  color: #ffffff;
+  color: #c3ceda;
   margin-left: 10px;
   text-decoration: none;
 }

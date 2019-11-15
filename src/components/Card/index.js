@@ -14,7 +14,6 @@ export default ({card, method}) => {
         ?
           <div className='deck' onClick={handleClick}>
             <h1>{card.attributes.name}</h1>
-            <img src={card.attributes.image} alt='Coming Soon!'></img>
           </div>
         :
           <img 
