@@ -54,7 +54,7 @@ export default class Login extends Component {
   render() {
     return(
       <section className='login-zone'>
-        <form id='form-submissions' onSubmit={event => this.logUserIn(event)}>
+        <form id='login-form-submissions' onSubmit={event => this.logUserIn(event)}>
           <label htmlFor="login-email">Email</label>
           <input id="login-email" type="text" placeholder="example@example.com" name="email" 
           onChange={event => this.updateEmail(event)} value={this.state.email} />
@@ -63,7 +63,7 @@ export default class Login extends Component {
           <input id="login-password" type="password" placeholder="password" name="password" 
           onChange={event => this.updatePassword(event)} value={this.state.password} />
 
-          <input type="submit" value="Login" />
+          <input className='submitButton' type="submit" value="Login" />
         </form>
       </section>
     )

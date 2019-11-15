@@ -54,7 +54,7 @@ export default class Signup extends Component {
   render() {
     return(
       <section className='signup-zone'>
-        <form id="form-submissions" onSubmit={event => this.signUserUp(event)}>
+        <form id="signup-form-submissions" onSubmit={event => this.signUserUp(event)}>
           <label htmlFor="signup-email">Email</label>
           <input id="signup-email" type="text" placeholder="example@example.com"name="email"
           onChange={event => this.updateEmail(event)} value={this.state.email}/>
@@ -67,7 +67,7 @@ export default class Signup extends Component {
           <input id="signup-password_confirmation" type="password" placeholder="password_confirmation" name="password_confirmation"
           onChange={event => this.updatePasswordconfirmation(event)} value={this.state.password_confirmation}/>
           
-          <input type="submit" value="Sign up"/>
+          <input className='submitButton'type="submit" value="Sign up"/>
         </form>
       </section>
     )

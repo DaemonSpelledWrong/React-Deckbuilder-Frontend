@@ -2,7 +2,7 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-around;
-  background-image: url('https://i.pinimg.com/originals/82/32/15/8232157f8d4e09717bf71b9a5e7d2929.jpg');
+  background-color: #c3ceda;
   background-size: 100vw 42vh;
   padding: 1rem;
   height: 42vh;

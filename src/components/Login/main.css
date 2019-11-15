@@ -4,3 +4,27 @@
   justify-content: center;
   height: 50vh;
 }
+
+#login-form-submissions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 2px solid #171d2d;
+  border-radius: 1rem;
+  padding: 1rem;
+  width: 20vw;
+  height: 20vh;
+}
+
+input {
+  width: 100%;
+  border-radius: 0.3rem;
+}
+
+.submitButton {
+  border: 0;
+  border-radius: 0.5rem;
+  background-color:#0c4160;
+  color: #c3ceda;
+  padding: 0.5em;
+}
