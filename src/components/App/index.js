@@ -26,7 +26,7 @@ export default class App extends Component {
   }
 
   componentDidMount = () => {
-    fetch('http://localhost:3000/standard_cards')
+    fetch('https://safe-bayou-71328.herokuapp.com/standard_cards')
       .then(response => response.json())
       .then(cards => this.setState({
           allCards: cards
@@ -93,7 +93,7 @@ export default class App extends Component {
         })
       })
     :
-      fetch('http://localhost:3000/decks', {
+      fetch('https://safe-bayou-71328.herokuapp.com/decks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
