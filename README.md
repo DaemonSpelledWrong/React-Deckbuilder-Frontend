@@ -10,33 +10,23 @@ Currently it is not hooked up to a backend and the card rendering will not funct
 
 ## Requirements
 ---
-- Ruby
-- Rails
 - React
 - Node / NPM
 
 ## Installation
 ---
-Add the following gem lines to your Gemfile: 
-```
-gem 'rest-client'
-gem 'bcrypt'
-gem 'jwt'
-gem 'simple_command'
-gem 'pg'
-```
-and run `bundle install` from your shell.
-The 'pg' gem is for the PostgreSQL database. 
-
-For the frontend, run `npm install` to install all the packages locally.
+Run `npm install` to install all the packages locally.
 
 ## Usage
 ---
-- Once the project is forked, make sure to run your migrations and seed your database. You can do this by running: 
-  - `rails db:migrate`
-  - `rails db:seed`
-- Once you've installed the necessary dependancies and run migrations and seeds, host your backend on localhost:3000 by using the rails command: `rails s`
-- To host the front end, use `npm start` in your front end.
+- Use `npm start` to host the site locally.
+
+## Upcoming Features
+---
+- Styled user cards
+- Mobile compatability
+- Cached data
+- New CSS?
 
 ## Contributing
 ---
