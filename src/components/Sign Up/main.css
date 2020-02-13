@@ -14,3 +14,17 @@
   width: 20vw;
   height: 30vh;
 }
+
+@media screen and (max-width: 375px) {
+
+  #signup-form-submissions {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 2px solid #171d2d;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 60vw;
+    height: 30vh;
+  }
+}
