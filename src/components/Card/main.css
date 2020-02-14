@@ -10,3 +10,11 @@
   height: 4vw;
   padding: 1rem;
 }
+
+@media screen and (max-width: 375px) {
+
+  .card img {
+    border-radius: 5px;
+    width: 65px;
+  }
+}
