@@ -26,3 +26,16 @@ p {
     text-align: center;
   }
 }
+
+@media screen and (max-width: 1366px) {
+
+  .home-container img{
+    width: 29em;
+    padding-top: 2em;
+  }
+  
+  p {
+    font-size: 4rem;
+    text-align: center;
+  }  
+}
