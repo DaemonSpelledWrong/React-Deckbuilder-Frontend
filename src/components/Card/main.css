@@ -19,10 +19,16 @@
   }
 }
 
-@media screen and (max-width: 1366px) {
+@media screen and (min-width: 376px) and (max-width: 1280px) {
+  .card img {
+    border-radius: 10px;
+    width: 124px;
+  }
+}
 
+@media screen and (min-width: 1281px) and (max-width: 1366px) {
   .card img {
     border-radius: 10px;
     width: 137px;
-  }  
+  }
 }
