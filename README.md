@@ -23,8 +23,10 @@ Run `npm install` to install all the packages locally.
 
 ## Upcoming Features
 ---
-- Styled user cards
-- Mobile compatability
+- Styled user deck 'cards'
+- Multiple resolution scaling
+- When a card is either hovered over or clicked on, the card will be magnified. Still weighing options.
+- Card page will display more than just one row of cards.
 - Cached data
 - New CSS?
 
