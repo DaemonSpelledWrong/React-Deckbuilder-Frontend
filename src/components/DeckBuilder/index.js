@@ -10,6 +10,7 @@ export default ({allCards, selectedCards, user, addCard, removeCard, saveNewDeck
       <CardContainer 
         allCards={allCards}
         method={addCard}
+        cardPageCount={9}
       />
       <CardContainer 
         allCards={selectedCards}

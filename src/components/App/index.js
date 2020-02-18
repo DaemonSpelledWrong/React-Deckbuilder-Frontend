@@ -125,7 +125,7 @@ export default class App extends Component {
               <Route exact path="/">
                 <Home user={user}/>
               </Route>
-              <Route path="/cards" render={(...props) => <CardContainer allCards={allCards} method={this.viewCard}/>} />
+              <Route path="/cards" render={(...props) => <CardContainer allCards={allCards} method={this.viewCard} cardPageCount={27}/>} />
               <Route path='/deckbuilder'>
                 <DeckBuilder 
                   allCards={allCards} 

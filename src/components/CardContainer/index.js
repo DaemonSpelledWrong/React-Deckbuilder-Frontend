@@ -5,7 +5,7 @@ import './main.css'
 export default class CardContainer extends Component {
   state = {
     currentPage: 1,
-    cardsPerPage: 9
+    cardsPerPage: this.props.cardPageCount
   }
 
   decrementButton = () => {
