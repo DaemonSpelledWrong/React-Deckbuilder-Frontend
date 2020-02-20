@@ -27,7 +27,7 @@ p {
   }
 }
 
-@media screen and (max-width: 1366px) {
+@media screen and (min-width: 376px) and (max-width: 1366px) {
 
   .home-container img{
     width: 29em;
