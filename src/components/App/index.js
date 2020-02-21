@@ -22,7 +22,8 @@ export default class App extends Component {
     selectedCards: [],
     user: null,
     decks: null,
-    deck_id: null
+    deck_id: null,
+    isMobile: false
   }
 
   componentDidMount = () => {
@@ -31,6 +32,19 @@ export default class App extends Component {
       .then(cards => this.setState({
           allCards: cards
       }))
+
+    window.addEventListener("resize", this.updatePredicate);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updatePredicate);
+  }
+
+
+  updatePredicate = () => {
+    this.setState({
+      isMobile: window.innerWidth < 481
+    })
   }
 
   loginUser = token => {
@@ -115,12 +129,12 @@ export default class App extends Component {
   }
 
   render() {
-    const { allCards, selectedCards, user, decks } = this.state
+    const { allCards, selectedCards, user, decks, isMobile } = this.state
     return(
       <div className="App">
         <section className="content-wrap">
           <Router>
-            <Navigation loggedIn={user} reset={this.resetDeck}/>
+            <Navigation loggedIn={user} reset={this.resetDeck} mobile={isMobile}/>
             <Switch>
               <Route exact path="/">
                 <Home user={user}/>
