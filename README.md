@@ -6,8 +6,8 @@ All card data has been seeded from the <a href="https://scryfall.com/docs/api">S
 
 This project is live on: https://react-deckbuilder-frontend.firebaseapp.com
 
-Currently it is not hooked up to a backend and the card rendering will not function!
 
+Currently the backend is only partly operational. The login features is broken while live. 
 ## Requirements
 ---
 - React
