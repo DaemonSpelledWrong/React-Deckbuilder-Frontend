@@ -1,4 +1,5 @@
 import React from 'react';
+import HamburgerMenu from '../../components/HamburgerMenu';
 import {
   Link
 } from "react-router-dom";
@@ -14,7 +15,7 @@ const Navigation = ({loggedIn, reset, mobile}) => {
         <p className="title">Magic Deckbuilder Deluxe</p>
         {
           mobile
-          ? 'Hello'
+          ? <HamburgerMenu />
           : 
             <ul className="navbar">
               <li onClick={reset}>
@@ -42,7 +43,7 @@ const Navigation = ({loggedIn, reset, mobile}) => {
         <p className="title">Magic Deckbuilder Deluxe</p>
         {
           mobile
-          ? 'Hello'
+          ? <HamburgerMenu />
           : 
             <ul className="navbar">
               <li>
