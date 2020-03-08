@@ -56,7 +56,8 @@ const App = () => {
   };
 
   const addCard = card => {
-    return (selectedCards.includes(card)
+    return (
+      selectedCards.includes(card)
     ? null
     : setSelectedCards([...selectedCards, card])
     );
