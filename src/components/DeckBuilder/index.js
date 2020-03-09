@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './main.css'
 
 import CardContainer from '../CardContainer';
 
 export default ({allCards, selectedCards, user, addCard, removeCard, saveNewDeck}) => {
+
+  useEffect(() => {
+    
+  }, [selectedCards]);
 
   return(
     <section className='deck-zone'>
