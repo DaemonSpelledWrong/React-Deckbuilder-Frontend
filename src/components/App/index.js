@@ -56,6 +56,7 @@ const App = () => {
   };
 
   const addCard = card => {
+    console.log(selectedCards);
     return (
       selectedCards.includes(card)
     ? null
