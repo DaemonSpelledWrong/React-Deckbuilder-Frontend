@@ -18,6 +18,7 @@ export default ({allCards, selectedCards, user, addCard, removeCard, saveNewDeck
         user={user}
         deck = 'deck'
         saveNewDeck={saveNewDeck}
+        cardPageCount={9}
       />
     </section>
   )
