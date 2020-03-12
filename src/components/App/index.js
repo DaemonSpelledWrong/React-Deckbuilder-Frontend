@@ -18,7 +18,6 @@ import Signup from '../Sign Up';
 const App = () => {
 
   const [ allCards, setAllCards ]           = useState([]);
-  const [ selectedCards, setSelectedCards ] = useState([]);
   const [ user, setUser ]                   = useState(null);
   const [ decks, setDecks ]                 = useState({});
   const [ deck_id, setDeckId ]              = useState(null);
@@ -32,10 +31,6 @@ const App = () => {
     
       window.addEventListener("resize", updatePredicate())
   }, []);
-
-  // componentWillUnmount() {
-  //   window.removeEventListener("resize", this.updatePredicate);
-  // }
 
   const updatePredicate = () => {
     setIsMobile(window.innerWidth < 481);
@@ -55,23 +50,6 @@ const App = () => {
     setUser(null);
   };
 
-  const addCard = card => {
-    console.log(selectedCards);
-    return (
-      selectedCards.includes(card)
-    ? null
-    : setSelectedCards([...selectedCards, card])
-    );
-  };
-
-  const removeCard = card => {
-    return selectedCards.includes(card)
-    ? setSelectedCards(selectedCards.filter(thisCard => {
-        return thisCard !== card;
-      }))
-    : null
-  };
-
   const viewCard = card => {
     console.log('to be added!', card);
   };
@@ -79,34 +57,6 @@ const App = () => {
   const editDeck = deck => {
     setSelectedCards(deck.attributes.standard_cards);
     setDeckId(deck.attributes.id);
-  };
-
-  const saveDeck = () => {
-    deck_id !== null
-    ? 
-      fetch(`http://localhost:3000/decks/${deck_id}`, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: 'Deck',
-          user_id: user.data.attributes.id,
-          cards: selectedCards
-        })
-      })
-    :
-      fetch('https://safe-bayou-71328.herokuapp.com/decks', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          user_id: user.data.attributes.id,
-          name: 'Deck',
-          cards: selectedCards
-        })
-      })
   };
 
   const resetDeck = () => {
@@ -126,11 +76,8 @@ const App = () => {
             <Route path='/deckbuilder'>
               <DeckBuilder 
                 allCards={allCards} 
-                selectedCards={selectedCards}
                 user={user}
-                addCard={addCard}
-                removeCard={removeCard}
-                saveNewDeck={saveDeck}
+                deck_id={deck_id}
               />
             </Route>
             <Route path='/signup' component={ Signup }/>
@@ -138,7 +85,7 @@ const App = () => {
               <Login loginUser={loginUser} logoutUser={logoutUser} user={user}/>
             </Route>
             <Route path='/profile'>
-              <Profile user={user} decks={decks} method={editDeck}/>
+              <Profile user={user} decks={decks}/>
             </Route>
           </Switch>
         </Router>
