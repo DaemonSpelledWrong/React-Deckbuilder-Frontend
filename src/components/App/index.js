@@ -54,10 +54,10 @@ const App = () => {
     console.log('to be added!', card);
   };
 
-  const editDeck = deck => {
-    setSelectedCards(deck.attributes.standard_cards);
-    setDeckId(deck.attributes.id);
-  };
+  // const editDeck = deck => {
+  //   setSelectedCards(deck.attributes.standard_cards);
+  //   setDeckId(deck.attributes.id);
+  // };
 
   const resetDeck = () => {
     setDeckId(null);
@@ -85,7 +85,7 @@ const App = () => {
               <Login loginUser={loginUser} logoutUser={logoutUser} user={user}/>
             </Route>
             <Route path='/profile'>
-              <Profile user={user} decks={decks}/>
+              <Profile user={user} decks={decks} />
             </Route>
           </Switch>
         </Router>

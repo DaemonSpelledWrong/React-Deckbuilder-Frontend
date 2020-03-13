@@ -25,7 +25,7 @@ const Navigation = ({loggedIn, reset, mobile}) => {
                 <Link to="/cards">Cards</Link>
               </li>
               <li>
-                <Link to="/deckbuilder">Deck Builder</Link>
+                <Link to="/deckbuilder" id='deckbuilder'>Deck Builder</Link>
               </li>
               <li onClick={reset}>
                 <Link to="/profile">Profile</Link>
@@ -53,7 +53,7 @@ const Navigation = ({loggedIn, reset, mobile}) => {
                 <Link to="/cards">Cards</Link>
               </li>
               <li>
-                <Link to="/deckbuilder">Deck Builder</Link>
+                <Link to="/deckbuilder" id='deckbuilder'>Deck Builder</Link>
               </li>
               <li>
                 <Link to="/signup">Sign Up</Link>
