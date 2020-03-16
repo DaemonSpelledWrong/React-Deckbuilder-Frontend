@@ -9,7 +9,7 @@ export default class Signup extends Component {
   }
   signUserUp = (event) => {
     event.preventDefault();
-    fetch('http://localhost:3000/registration', {
+    fetch('https://safe-bayou-71328.herokuapp.com/registration', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

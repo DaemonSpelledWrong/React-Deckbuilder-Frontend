@@ -21,7 +21,7 @@ export default class CardContainer extends Component {
   }
 
   render() {
-    const { currentPage, cardsPerPage } = this.state;
+    const { currentPage, cardsPerPage = this.props.allCards.length } = this.state;
     const allCards = this.props.allCards
 
     const indexOfLastCard = currentPage * cardsPerPage;

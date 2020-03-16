@@ -15,7 +15,7 @@ export default class Login extends Component {
 
   logUserIn = (event) => {
     event.preventDefault();
-    fetch('http://localhost:3000/authenticate', {
+    fetch('https://safe-bayou-71328.herokuapp.com/authenticate', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

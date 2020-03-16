@@ -21,7 +21,7 @@ const Navigation = ({loggedIn, reset, mobile}) => {
               <li onClick={reset}>
                 <Link to="/">Home</Link>
               </li>
-              <li onClick={reset}>
+              <li>
                 <Link to="/cards">Cards</Link>
               </li>
               <li>

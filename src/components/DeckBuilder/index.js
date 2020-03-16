@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './main.css'
 
 import CardContainer from '../CardContainer';
@@ -7,6 +7,13 @@ export default ({allCards, user, deck_id}) => {
 
   const [ selectedCards, setSelectedCards ] = useState([]);
 
+  useEffect(() => {
+    if (deck_id) {
+      fetch(`https://safe-bayou-71328.herokuapp.com/decks/${deck_id}`)
+        .then(response => response.json())
+        .then(deck => setSelectedCards(deck.standard_cards))
+    }
+  }, [deck_id])
   const addCard = card => {
     console.log(selectedCards);
     return (
@@ -27,7 +34,7 @@ export default ({allCards, user, deck_id}) => {
   const saveDeck = () => {
     deck_id !== null
     ? 
-      fetch(`http://localhost:3000/decks/${deck_id}`, {
+      fetch(`https://safe-bayou-71328.herokuapp.com/decks/${deck_id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
