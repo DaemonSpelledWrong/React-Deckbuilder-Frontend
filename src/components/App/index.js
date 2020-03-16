@@ -19,7 +19,7 @@ const App = () => {
 
   const [ allCards, setAllCards ]           = useState([]);
   const [ user, setUser ]                   = useState(null);
-  const [ decks, setDecks ]                 = useState({});
+  const [ decks, setDecks ]                 = useState(null);
   const [ deck_id, setDeckId ]              = useState(null);
   const [ isMobile, setIsMobile ]           = useState(false);
 
@@ -42,7 +42,7 @@ const App = () => {
       ? null
       : localStorage.getItem('authToken') === 'undefined'
         ? null
-        : setUser(token.user) && setDecks(token.decks)
+        : (setUser(token.user), setDecks(token.decks))
     );
   };
 
@@ -51,13 +51,8 @@ const App = () => {
   };
 
   const viewCard = card => {
-    console.log('to be added!', card);
+    console.log(deck_id);
   };
-
-  // const editDeck = deck => {
-  //   setSelectedCards(deck.attributes.standard_cards);
-  //   setDeckId(deck.attributes.id);
-  // };
 
   const resetDeck = () => {
     setDeckId(null);
@@ -85,7 +80,7 @@ const App = () => {
               <Login loginUser={loginUser} logoutUser={logoutUser} user={user}/>
             </Route>
             <Route path='/profile'>
-              <Profile user={user} decks={decks} />
+              <Profile user={user} decks={decks} setDeckId={setDeckId}/>
             </Route>
           </Switch>
         </Router>
