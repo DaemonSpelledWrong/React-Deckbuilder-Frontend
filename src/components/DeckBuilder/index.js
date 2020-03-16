@@ -13,7 +13,8 @@ export default ({allCards, user, deck_id}) => {
         .then(response => response.json())
         .then(deck => setSelectedCards(deck.standard_cards))
     }
-  }, [deck_id])
+  }, [deck_id]);
+
   const addCard = card => {
     console.log(selectedCards);
     return (
