@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import './main.css'
+import React, { useState, useEffect } from 'react';
+import './main.css';
 
-export default class Login extends Component {
+const Login = ({loginUser, logoutUser, user}) => {
 
-  state = {
-    email: '',
-    password: ''
-  }
+  const [ email, updateEmail ]       = useState('');
+  const [ password, updatePassword ] = useState('');
 
-  componentDidMount = () =>{
+  useEffect(() => {
     localStorage.removeItem('authToken')
-    return this.props.user !== null ? this.props.logoutUser() : null
-  }
+    if(user !== null) {
+      logoutUser();
+    };
+  }, []);
 
-  logUserIn = (event) => {
+  const logUserIn = (event) => {
     event.preventDefault();
     fetch('https://safe-bayou-71328.herokuapp.com/authenticate', {
       method: "POST",
@@ -22,50 +22,36 @@ export default class Login extends Component {
         "Accept": "application/json"
       },
       body: JSON.stringify({
-        email: this.state.email,
-        password: this.state.password
+        email: email,
+        password: password
       })
     })
     .then(response => response.json())
     .then(token => {
-      localStorage.setItem('authToken', token.auth_token)
-      this.props.loginUser(token)
+      localStorage.setItem('authToken', token.auth_token);
+      loginUser(token);
     })
     .then(
-      this.setState({
-        email: '',
-        password: ''
-      })
-    )
-  }
+      updateEmail(''),
+      updatePassword('')
+    );
+  };
 
-  updateEmail = (event) => {
-    this.setState({
-      email: event.target.value
-    })  
-  }
+  return(
+    <section className='login-zone'>
+      <form id='login-form-submissions' onSubmit={event => logUserIn(event)}>
+        <label htmlFor="login-email">Email</label>
+        <input id="login-email" type="text" placeholder="example@example.com" name="email" 
+        onChange={event => updateEmail(event.target.value)} value={email} />
 
-  updatePassword = (event) => {
-    this.setState({
-      password: event.target.value
-    })
-  }
+        <label htmlFor="login-password">Password</label>
+        <input id="login-password" type="password" placeholder="password" name="password" 
+        onChange={event => updatePassword(event.target.value)} value={password} />
 
-  render() {
-    return(
-      <section className='login-zone'>
-        <form id='login-form-submissions' onSubmit={event => this.logUserIn(event)}>
-          <label htmlFor="login-email">Email</label>
-          <input id="login-email" type="text" placeholder="example@example.com" name="email" 
-          onChange={event => this.updateEmail(event)} value={this.state.email} />
+        <input className='submitButton' type="submit" value="Login" />
+      </form>
+    </section>
+  )
+};
 
-          <label htmlFor="login-password">Password</label>
-          <input id="login-password" type="password" placeholder="password" name="password" 
-          onChange={event => this.updatePassword(event)} value={this.state.password} />
-
-          <input className='submitButton' type="submit" value="Login" />
-        </form>
-      </section>
-    )
-  }
-}
+export default Login;
