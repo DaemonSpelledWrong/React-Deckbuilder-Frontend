@@ -7,7 +7,7 @@ export const useHttp = (url, dependencies) => {
     fetch(url)
       .then(response => response.json())
       .then(data => setFetchedData(data))
-  }, [dependencies]);
+  }, dependencies);
 
-  return fetchedData;
+  return [fetchedData];
 };

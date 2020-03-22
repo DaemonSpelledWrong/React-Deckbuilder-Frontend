@@ -15,6 +15,8 @@ import Profile from '../Profile';
 import Navigation from '../Navigation';
 import Signup from '../Sign Up';
 
+import { useHttp } from '../../hooks/http';
+
 const App = () => {
 
   const [ allCards, setAllCards ]           = useState([]);
@@ -23,14 +25,14 @@ const App = () => {
   const [ deck_id, setDeckId ]              = useState(null);
   const [ isMobile, setIsMobile ]           = useState(false);
 
+
+  const [fetchedData] = useHttp('https://safe-bayou-71328.herokuapp.com/standard_cards', []);
+
   useEffect(() => {
     updatePredicate();
-    fetch('https://safe-bayou-71328.herokuapp.com/standard_cards')
-      .then(response => response.json())
-      .then(cards => setAllCards(cards));
-    
-      window.addEventListener("resize", updatePredicate())
-  }, []);
+    setAllCards(fetchedData);
+    window.addEventListener("resize", updatePredicate())
+  }, [fetchedData]);
 
   const updatePredicate = () => {
     setIsMobile(window.innerWidth < 481);
