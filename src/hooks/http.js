@@ -1,13 +1,17 @@
 import { useState, useEffect } from 'react';
 
-export const useHttp = (url, dependencies) => {
+export const useHttp = (url, dependencies, method, body) => {
   const [ fetchedData, setFetchedData ] = useState([]);
 
   useEffect(() => {
     fetch(url)
       .then(response => response.json())
       .then(data => setFetchedData(data))
+      .catch(err => {
+        console.log(err);
+      })
   }, [dependencies]);
 
-  return fetchedData;
+  console.log(fetchedData);
+  return [fetchedData];
 };

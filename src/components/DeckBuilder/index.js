@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './main.css'
 
 import CardContainer from '../CardContainer';
+import { useHttp } from '../../hooks/http';
 
 export default ({allCards, user, deck_id}) => {
 
@@ -16,7 +17,6 @@ export default ({allCards, user, deck_id}) => {
   }, [deck_id]);
 
   const addCard = card => {
-    console.log(selectedCards);
     return (
       selectedCards.includes(card)
     ? null
@@ -34,7 +34,7 @@ export default ({allCards, user, deck_id}) => {
 
   const saveDeck = () => {
     deck_id !== null
-    ? 
+    ?
       fetch(`https://safe-bayou-71328.herokuapp.com/decks/${deck_id}`, {
         method: 'PATCH',
         headers: {
