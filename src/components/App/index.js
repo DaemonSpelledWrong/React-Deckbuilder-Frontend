@@ -19,20 +19,18 @@ import { useHttp } from '../../hooks/http';
 
 const App = () => {
 
-  const [ allCards, setAllCards ]           = useState([]);
   const [ user, setUser ]                   = useState(null);
   const [ decks, setDecks ]                 = useState(null);
   const [ deck_id, setDeckId ]              = useState(null);
   const [ isMobile, setIsMobile ]           = useState(false);
 
 
-  const [fetchedData] = useHttp('https://safe-bayou-71328.herokuapp.com/standard_cards', []);
+  const [ fetchedData ] = useHttp('https://safe-bayou-71328.herokuapp.com/standard_cards', null);
 
   useEffect(() => {
     updatePredicate();
-    setAllCards(fetchedData);
     window.addEventListener("resize", updatePredicate())
-  }, [fetchedData]);
+  }, []);
 
   const updatePredicate = () => {
     setIsMobile(window.innerWidth < 481);
@@ -56,23 +54,19 @@ const App = () => {
     console.log(deck_id);
   };
 
-  const resetDeck = () => {
-    setDeckId(null);
-  };
-
   return(
     <div className="App">
       <section className="content-wrap">
         <Router>
-          <Navigation loggedIn={user} reset={resetDeck} mobile={isMobile}/>
+          <Navigation loggedIn={user} mobile={isMobile}/>
           <Switch>
             <Route exact path="/">
               <Home user={user}/>
             </Route>
-            <Route path="/cards" render={(...props) => <CardContainer allCards={allCards} method={viewCard} cardPageCount={27}/>} />
+            <Route path="/cards" render={(...props) => <CardContainer allCards={fetchedData} method={viewCard} cardPageCount={27}/>} />
             <Route path='/deckbuilder'>
               <DeckBuilder 
-                allCards={allCards} 
+                allCards={fetchedData} 
                 user={user}
                 deck_id={deck_id}
               />

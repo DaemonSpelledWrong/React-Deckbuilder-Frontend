@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import './main.css'
 
-const Navigation = ({loggedIn, reset, mobile}) => {
+const Navigation = ({loggedIn, mobile}) => {
 
   return(
     loggedIn
@@ -18,7 +18,7 @@ const Navigation = ({loggedIn, reset, mobile}) => {
           ? <HamburgerMenu />
           : 
             <ul className="navbar">
-              <li onClick={reset}>
+              <li>
                 <Link to="/">Home</Link>
               </li>
               <li>
@@ -27,10 +27,10 @@ const Navigation = ({loggedIn, reset, mobile}) => {
               <li>
                 <Link to="/deckbuilder" id='deckbuilder'>Deck Builder</Link>
               </li>
-              <li onClick={reset}>
+              <li>
                 <Link to="/profile">Profile</Link>
               </li>
-              <li onClick={reset}>
+              <li>
                 <Link to='/login'>Logout</Link>
               </li>
             </ul>
