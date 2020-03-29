@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './main.css'
 
 import CardContainer from '../CardContainer';
-import { useHttp } from '../../hooks/http';
 
 export default ({allCards, user, deck_id}) => {
 
